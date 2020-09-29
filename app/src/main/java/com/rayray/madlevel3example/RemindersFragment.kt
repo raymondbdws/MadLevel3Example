@@ -57,7 +57,7 @@ class RemindersFragment : Fragment() {
     }
 
     private fun createItemTouchHelper(): ItemTouchHelper{
-        val CALLBACK = object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+        val callback = object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -67,12 +67,12 @@ class RemindersFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val POSITION = viewHolder.adapterPosition
-                REMINDERS.removeAt(POSITION)
+                val position = viewHolder.adapterPosition
+                REMINDERS.removeAt(position)
                 reminderAdapter.notifyDataSetChanged()
             }
 
         }
-        return ItemTouchHelper(CALLBACK)
+        return ItemTouchHelper(callback)
     }
 }
